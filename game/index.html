@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twin Lanterns — Spot the Difference</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <h1>Twin Lanterns</h1>
+    <p class="tagline">Spot the difference — three hand-drawn scenes, seven secrets each</p>
+  </div>
+  <div class="hud" aria-label="Game status">
+    <div class="hud-item"><span class="hud-label">Scene</span><span id="hud-level">Twin Lanterns</span></div>
+    <div class="hud-item"><span class="hud-label">Found</span><span id="hud-found">0 / 7 found</span></div>
+    <div class="hud-item"><span class="hud-label">Time</span><span id="hud-time">2:00</span></div>
+    <div class="hud-item"><span class="hud-label">Score</span><span id="hud-score">0 pts</span></div>
+    <button id="btn-hint" class="btn small" type="button">Hint <span id="hud-hints">Hints: 3</span></button>
+    <button id="btn-mute" class="btn small" type="button">Sound: on</button>
+  </div>
+</header>
+
+<div class="timebar" aria-hidden="true"><div id="time-bar-fill"></div></div>
+
+<main class="boards">
+  <section class="board">
+    <h2>Left — the original</h2>
+    <svg id="panel-left" role="img" aria-label="Left picture: the original scene"></svg>
+  </section>
+  <section class="board">
+    <h2>Right — spot the changes</h2>
+    <svg id="panel-right" role="img" aria-label="Right picture: the same scene with seven differences"></svg>
+  </section>
+</main>
+
+<p id="hud-message" class="message">Press Enter or Start to play.</p>
+
+<section class="below">
+  <div class="found-panel">
+    <h3>Differences found</h3>
+    <ul id="found-list"></ul>
+  </div>
+  <div class="help-panel">
+    <h3>How to play</h3>
+    <ul>
+      <li>Click a difference on <strong>either</strong> picture — it counts on both.</li>
+      <li>Each scene hides <strong>7 differences</strong>. Find them all before the clock runs out.</li>
+      <li>A wrong click costs <strong>5 seconds</strong> and 10 points. A find earns 100 points.</li>
+      <li>Keys: <kbd>H</kbd> hint · <kbd>R</kbd> restart scene · <kbd>N</kbd> next scene · <kbd>Enter</kbd> start.</li>
+      <li>Three scenes, rising difficulty: Lantern Night Market, Koi Garden Pond, Harbour at Dusk.</li>
+    </ul>
+    <button id="btn-restart" class="btn" type="button">Restart scene</button>
+  </div>
+</section>
+
+<div id="overlay-title" class="overlay">
+  <div class="card">
+    <h2>Twin Lanterns</h2>
+    <p class="lede">Two pictures, side by side. Seven small lies hide in the right one.</p>
+    <p>Study the lantern market, the koi pond and the harbour at dusk. Click every
+    difference you spot — on either picture — before the two-minute clock runs dry.
+    Wrong clicks cost time, hints cost nothing but pride.</p>
+    <button id="btn-start" class="btn big" type="button">Start the hunt</button>
+    <p class="keys">Mouse to click · <kbd>H</kbd> hint · <kbd>R</kbd> restart · <kbd>N</kbd> next scene</p>
+  </div>
+</div>
+
+<div id="overlay-level" class="overlay hidden">
+  <div class="card">
+    <h2>Scene cleared!</h2>
+    <p class="lede" id="level-name">Lantern Night Market</p>
+    <p>All 7 differences found. Time bonus: <strong><span id="level-bonus">0</span> pts</strong><br>
+    Total score: <strong><span id="level-score">0</span> pts</strong></p>
+    <p id="level-next-label">Next scene</p>
+    <button id="btn-next" class="btn big" type="button">Continue</button>
+  </div>
+</div>
+
+<div id="overlay-over" class="overlay hidden">
+  <div class="card">
+    <h2>Out of time!</h2>
+    <p class="lede">The lanterns dim before you found them all.</p>
+    <p>You found <strong><span id="over-found">0 of 7</span></strong> differences.<br>
+    Score: <strong><span id="over-score">0</span> pts</strong></p>
+    <button id="btn-retry" class="btn big" type="button">Try this scene again</button>
+  </div>
+</div>
+
+<div id="overlay-win" class="overlay hidden">
+  <div class="card">
+    <h2>You found them all!</h2>
+    <p class="lede">Every secret of all three scenes, uncovered.</p>
+    <p>Time bonus: <strong><span id="win-bonus">0</span> pts</strong><br>
+    Final score: <strong><span id="win-score">0</span> pts</strong></p>
+    <p>Play again for a sharper eye — the differences never move, but the clock always does.</p>
+    <button id="btn-again" class="btn big" type="button">Play again</button>
+  </div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
